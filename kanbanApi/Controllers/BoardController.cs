@@ -92,5 +92,17 @@ namespace kanbanApi.Controllers
 
             return Ok();
         }
+        [HttpDelete("removeBoard/{boardId}")]
+
+        public async Task<IActionResult> RemoveBoard(int boardId)
+        {
+            Board board = _context.boards.FirstOrDefault(b => b.Id == boardId);
+
+
+            _context.boards.Remove(board);
+            _context.SaveChanges();
+
+            return Ok();
+        }
     }
 }
